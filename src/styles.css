@@ -1,0 +1,101 @@
+/* You can add global styles to this file, and also import other style files */
+body { padding: 2em; }
+
+:root {
+	--blue: #007bff;
+	--indigo: #6610f2;
+	--purple: #6f42c1;
+	--pink: #e83e8c;
+	--red: #dc3545;
+	--orange: #fd7e14;
+	--yellow: #ffc107;
+	--green: #28a745;
+	--teal: #20c997;
+	--cyan: #17a2b8;
+	--white: #fff;
+	--gray: #6c757d;
+	--gray-dark: #343a40;
+	--primary: #007bff;
+	--secondary: #6c757d;
+	--success: #28a745;
+	--info: #17a2b8;
+	--warning: #ffc107;
+	--danger: #dc3545;
+	--light: #f8f9fa;
+	--dark: #343a40;
+	--font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+#scrollbar::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: #e9e9e9;
+}
+
+#scrollbar::-webkit-scrollbar {
+	width: 10px;
+	background-color: #e9e9e9;
+}
+
+#scrollbar::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: var(--primary);
+}
+
+#scrollbar2::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: var(--gray-dark);
+}
+
+#scrollbar2::-webkit-scrollbar {
+	width: 10px;
+	background-color: var(--gray-dark);
+}
+
+#scrollbar2::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: var(--indigo);
+}
+
+.btn-msn {
+	background: rgb(0,120,255);
+	background: linear-gradient(0deg, rgba(0,120,255,1) 0%, rgba(0,198,255,1) 100%);
+	border: medium none;
+	border-radius: 10px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.btn-msn-outline {
+	border: medium none;
+	border-radius: 100rem;
+	color: black;
+	box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+	border: solid 3px transparent;
+	background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(0deg, rgba(0,120,255,1) 0%, rgba(0,198,255,1) 100%);
+	background-origin: border-box;
+	background-clip: content-box, border-box;
+	box-shadow: 2px 1000px 1px #fff inset;
+}
+
+.btn-msn-outline:hover{
+	box-shadow: none;
+  	color: white;
+}
+
+.papel {
+	background-color: #fff;
+	box-shadow:
+	  /* The top layer shadow */
+	  0 1px 1px rgba(0,0,0,0.15),
+	  /* The second layer */
+	  0 10px 0 -5px #eee,
+	  /* The second layer shadow */
+	  0 10px 1px -4px rgba(0,0,0,0.15),
+	   /* The third layer */
+	  0 20px 0 -10px #eee,
+	  /* The third layer shadow */
+	  0 20px 1px -9px rgba(0,0,0,0.15);
+	  /* Padding for demo purposes */
+	  padding: 10px;
+  }

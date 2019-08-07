@@ -1,0 +1,40 @@
+
+<div class="container-fluid   fondo h-100 d-block" >
+  
+
+  <div class="container ">
+    
+  
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Login</h5>
+            <form class="form-signin" [formGroup]="login" (ngSubmit)='logearte()'>
+              <div class="form-label-group">
+                <input type="email" id="inputEmail" class="form-control" placeholder="Ingresa tu Usuario" formControlName="username" required autofocus>
+                <label for="inputEmail">Ingresa tu Usuario</label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" formControlName="password" required>
+                <label for="inputPassword">Contraseña</label>
+              </div>
+
+              <div class="custom-control custom-checkbox mb-3">
+           
+              </div>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Ingresar</button>
+              <hr class="my-4">
+              <button class="btn btn-lg btn-success btn-block text-uppercase"    (click)="crearusuario()">Registrarse</button>
+            </form>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  

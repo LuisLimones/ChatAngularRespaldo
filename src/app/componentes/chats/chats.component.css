@@ -1,0 +1,55 @@
+.container{margin:auto;}
+img{ width: 60%; height: auto; float: left;}
+
+.recent_heading {float: left; width:40%;}
+
+.chat_ib h3{ color:#464646; }
+.chat_ib p{ font-size:14px; color:#989898; }
+.chat_img {
+  width: 50px;
+  height: 50px;
+}
+.chat_ib {
+  padding: 0 0 0 0px;
+  width: 90%;
+  border-radius: 10px;
+}
+
+
+.chat_people{ overflow:hidden; clear:both;}
+.chat_list {
+  margin: 0;
+  padding: 18px 16px 10px;
+  font-size:40px;
+}
+.inbox_chat { 
+  height: 500px; 
+  overflow-y: scroll;
+}
+
+ul{
+  margin: 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+}
+ul li{
+  position: relative;
+  list-style: none;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+ul li:hover{
+  background: rgb(0,120,255);
+	background: linear-gradient(0deg, rgba(0,120,255,1) 0%, rgba(0,198,255,1) 100%);
+  color: white;
+}
+h1{
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2)
+}

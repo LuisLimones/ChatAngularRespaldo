@@ -1,0 +1,52 @@
+<button style="margin: 10px;" class="btn-msn-outline" [routerLink]="['/chats']" routerLinkActive="router-link-active" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button> <b>Regresar</b>
+<label class="m-2 text-primary">{{this.estado_t}}</label>
+<div class="mesgs" *ngIf="usuario_logueado != 0 && usuario_selec != 0">
+  <div class="msg_history" id="scrollbar">
+    <div *ngFor="let m of mensajes">
+      <div *ngIf="m.emisor == nombre && m.msj" class="outgoing_msg">
+        <div class="sent_msg">
+            <p *ngIf="m.tipo == 1"> {{ m.msj }} </p>
+            <img style="max-width: 450px; height: auto;" *ngIf="m.tipo == 2" src="http://127.0.0.1:3333{{m.msj}}" alt="imagen de m.emisor">
+            <video style="max-width: 450px; height: auto;" *ngIf="m.tipo == 3" src="http://127.0.0.1:3333{{m.msj}}" controls></video>
+            <audio *ngIf="m.tipo == 4" src="http://127.0.0.1:3333{{m.msj}}" controls></audio>
+          <span class="time_date"> Yo </span>
+        </div>
+      </div>
+      <div *ngIf="m.emisor != nombre && m.msj">
+        <div class="received_msg">
+          <div class="received_withd_msg">
+            <p *ngIf="m.tipo == 1"> {{ m.msj }} </p>
+            <img style="max-width: 450px; height: auto;" *ngIf="m.tipo == 2" src="http://127.0.0.1:3333{{m.msj}}" alt="imagen de m.emisor">
+            <video style="max-width: 450px; height: auto;" *ngIf="m.tipo == 3" src="http://127.0.0.1:3333{{m.msj}}" controls></video>
+            <audio *ngIf="m.tipo == 4" src="http://127.0.0.1:3333{{m.msj}}" controls></audio>
+            <span class="time_date"> {{ m.emisor }} </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <form #form="ngForm">
+    <div class="type_msg">
+      <div class="input_msg_write row">
+        <input [(ngModel)]="mensaje" name="mensaje" type="text" (keydown)="escribiendo()"  id="mensaje" class="write_msg col-9" placeholder="Escribe un mensaje aquí" />
+        <div class="col-3">
+          <div class="msg_send_btn-video col btn-wrapper">
+              <label for="video" class="fa fa-file-video-o" aria-hidden="true"></label>
+              <input type="file" name="video" accept="video/*" (change)="guardarvideo($event)" />
+          </div>
+          <div class="msg_send_btn-imagen col btn-wrapper">
+            <label for="imagen" class="fa fa-file-picture-o" aria-hidden="true"></label>
+            <input type="file" name="imagen" accept="image/*" (change)="guardarimagen($event)" />
+          </div>
+          <div class="msg_send_btn-audio col btn-wrapper">
+            <label for="audio" class="fa fa-file-audio-o" aria-hidden="true"></label>
+            <input type="file" name="audio" accept="audio/*" (change)="guardaraudio($event)" />
+          </div>
+          
+          <button class="msg_send_btn col" type="submit" (click)="mandarMensaje()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

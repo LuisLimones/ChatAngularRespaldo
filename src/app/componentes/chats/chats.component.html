@@ -1,0 +1,26 @@
+<h2 class="offset-4"> Bienvenido de nuevo <b>{{nombre}}</b>.</h2>
+<br>
+<div class="row">
+  <div class="col-6" id="scrollbar">
+    <ul>
+      <h1>Contactos de la red social</h1>
+      <li *ngFor="let u of usuarios" (click)="seleccionarUsuario(u)">
+        <img  *ngIf="u.username != nombre" src="https://ptetutorials.com/images/user-profile.png" alt="profile pic" style="width: 25px; height: auto; border-radius: 100rem">
+        <span *ngIf="u.username != nombre"> &#10240; {{u.username}} </span>
+      </li>
+    </ul>
+  </div>
+  <div class="col-6" id="scrollbar">
+    <ul *ngFor="let g of grupos" (click)="seleccionarGrupo(g)" style="cursor: pointer; margin-bottom: 15px;">
+      <h1>Grupo {{g.id_chat}}</h1>
+      <span *ngFor="let u of g.usuarios">{{ u }} <br></span>
+    </ul>
+    <div *ngIf="grupos.length == 0">
+      <ul>
+        <h1>Al parecer, no estás en ningún grupo aún :c</h1>
+      </ul>
+      <br>
+    </div>
+    <button class="btn-msn btn-block" (click)="crearGrupo()">Crea un grupo!</button>
+  </div>
+</div>
