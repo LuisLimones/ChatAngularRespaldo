@@ -151,13 +151,15 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   /*Metodos para Enviar archivos*/
   guardaraudio(event){ 
+    console.log("Guardar Audio")
     let elemnt = event.target
     let formData = new FormData()     
     let msj;
      if(elemnt.files.length > 0)
      {
+       console.log("pasa if")
        formData.append('file',elemnt.files[0])
-       this.http.post<any>('http://127.0.0.1/archivos',formData).subscribe(res =>{
+       this.http.post<any>('http://127.0.0.1:3333/archivos',formData).subscribe(res =>{
        console.log(res);
          msj = {emisor:this.nombre,msj:res.url,tipo:4,estado:1};
          let datos = {id_chat: this.id_chat, mensaje:msj};
