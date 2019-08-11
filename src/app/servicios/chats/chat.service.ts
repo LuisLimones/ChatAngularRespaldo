@@ -6,7 +6,6 @@ import { Conversacion } from 'src/app/modelos/Conversacion';
 import { Mensaje } from 'src/app/modelos/Mensaje';
 import { Usuario } from 'src/app/modelos/Usuario';
 
-// la variable ws la ruta para conectarse al socket
 const ws = Ws('ws://127.0.0.1:3333')
 
 @Injectable({

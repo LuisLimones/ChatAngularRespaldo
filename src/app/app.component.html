@@ -10,7 +10,6 @@
             Usuarios
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <!--<a class="dropdown-item" *ngIf="!session()" [routerLink]="['login']" routerLinkActive="router-link-active">Iniciar Sesión</a>-->
             <a class="dropdown-item" style="cursor: pointer;" (click)="salir()" *ngIf="sesion()">Cerrar Sesión</a>            
           </div>
         </li>

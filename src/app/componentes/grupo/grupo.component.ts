@@ -5,18 +5,18 @@ import { ChatService } from 'src/app/servicios/chats/chat.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-crear-grupo',
-  templateUrl: './crear-grupo.component.html',
-  styleUrls: ['./crear-grupo.component.css']
+  selector: 'app-grupo',
+  templateUrl: './grupo.component.html',
+  styleUrls: ['./grupo.component.css']
 })
-export class CrearGrupoComponent implements OnInit {
+export class GrupoComponent implements OnInit {
 
-  constructor(private usuarioService: UsuarioService, private chatService: ChatService, private navegar: Router) { }
+  constructor(private usuarioService: UsuarioService, private chatService: ChatService, private router: Router) { }
 
-  // en este arreglo se guardarán todos los usuarios
   usuarios: Usuario[];
   usuariosSeleccionados: Array<String>;
   nombre: string;
+
   ngOnInit() {
     this.nombre = localStorage.getItem('username');
     this.usuariosSeleccionados = new Array<String>();
@@ -29,7 +29,7 @@ export class CrearGrupoComponent implements OnInit {
 
   crearGrupo(){
     if(this.usuariosSeleccionados.length < 3){
-      alert('si quieres hablar con alguien, mándale un mensaje directo!');
+      alert('Un grupo son 3 o mas personas\nPuedes hablar en privado seleccionando al usuario individualmente');
     }else{
       console.log('-- nombres de los usuarios a buscar')
       console.log(this.usuariosSeleccionados)
@@ -62,7 +62,7 @@ export class CrearGrupoComponent implements OnInit {
                   console.log('-- conver de la bd al registrar')
                   console.log(conversacion)
                   alert('se registró con éxito la conversación!');
-                  this.navegar.navigate(['/chats']);
+                  this.router.navigate(['/chats']);
                 }catch(e){ console.log(e); }
               });
             });

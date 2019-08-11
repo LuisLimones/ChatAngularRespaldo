@@ -4,26 +4,24 @@ import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuarios/usuario.service';
 
 @Component({
-  selector: 'app-crearusuario',
-  templateUrl: './crearusuario.component.html',
-  styleUrls: ['./crearusuario.component.css']
+  selector: 'app-registrarusuario',
+  templateUrl: './registrarusuario.component.html',
+  styleUrls: ['./registrarusuario.component.css']
 })
-export class CrearusuarioComponent implements OnInit, OnDestroy {
-
+export class RegistrarusuarioComponent implements OnInit, OnDestroy {
   public formcrearusuario: FormGroup;
   public builder = new FormBuilder();
   public json = {};
 
-
-  constructor( private router:Router, private usuarioService: UsuarioService) {
+  constructor(private router:Router, private usuarioService: UsuarioService) {
     this.formcrearusuario = this.builder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', [Validators.required,Validators.email]]
     });
-  }
+   }
 
-  ngOnInit() {
+   ngOnInit() {
     this.usuarioService.conectar()
   }
   ngOnDestroy(): void {
@@ -31,7 +29,6 @@ export class CrearusuarioComponent implements OnInit, OnDestroy {
   }
 
   public registrar(){
-    console.log("registrar");
     this.json = JSON.stringify({
       username: this.formcrearusuario.value.username,
       password: this.formcrearusuario.value.password,
@@ -39,10 +36,9 @@ export class CrearusuarioComponent implements OnInit, OnDestroy {
       console.log(this.json);
 
       this.usuarioService.registrarUsuario(this.json).subscribe(usuarios=>{
-      // this.usuarioService.enviarUsuarios(usuarios);
-      // console.log('usuarios re-enviados')
       this.formcrearusuario.reset();
       this.router.navigate(['/login']);
     });
   }
+
 }

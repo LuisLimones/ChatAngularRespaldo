@@ -12,21 +12,22 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-principal.component';
 import { ChatComponent } from './componentes/chat/chat.component';
 import { ChatsComponent } from './componentes/chats/chats.component';
-import { CrearusuarioComponent } from './componentes/crearusuario/crearusuario.component';
 import { LoginComponent } from './componentes/login/login.component';
-import { CrearGrupoComponent } from './componentes/crear-grupo/crear-grupo.component';
+import { GrupoComponent } from './componentes/grupo/grupo.component';
+import { RegistrarusuarioComponent } from './componentes/registrarusuario/registrarusuario.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    GrupoComponent,
+    RegistrarusuarioComponent,
     ChatComponent,
     ChatsComponent,
-    CrearusuarioComponent,
     PaginaPrincipalComponent,
-    LoginComponent,
-    CrearGrupoComponent
+    LoginComponent
+    
   ],
   imports: [
     BrowserModule,

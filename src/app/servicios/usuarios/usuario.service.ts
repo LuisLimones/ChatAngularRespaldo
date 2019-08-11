@@ -2,12 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import { Usuario } from 'src/app/modelos/Usuario';
+import Ws from '@adonisjs/websocket-client';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
-
-import Ws from '@adonisjs/websocket-client';
-// la variable ws la ruta para conectarse al socket
 const ws = Ws('ws://127.0.0.1:3333')
 
 @Injectable({
@@ -23,29 +20,26 @@ export class UsuarioService {
 
   conectar(){
     try{
-      // generamos la conexión al socket
       ws.connect();
-      const canal = ws.subscribe('usuarios')
-
-      // éste método se ejecutará cuando la conexión al canal chat esté lista.
+      const canal = ws.subscribe('usuarios');
       canal.on('ready', () => {
-        console.log('** suscripción al canal usuarios lista');
+        console.log('Suscripcion Usuarios');
       })
       // cuando reciba una actualización, lo mandará a la lista de usuarios
       canal.on('actualizar', (usuarios) => {
-        console.log("** usuarios recibidos del ws")
+        console.log("Actualiza Usuarios Socket")
         this.actualizarUsuarios(usuarios);
       })
     }
-    catch(e){console.log('ya está conectado')}
+    catch(e){console.log('Ya Conectado')}
   }
 
   cerrarConexion(){
     try{
       ws.getSubscription('usuarios').close();
-      console.log('desconectado del socket usuarios')
+      console.log('Desconectar Socket')
     }
-    catch(e){console.log('no hay conexion para cerrar')}
+    catch(e){console.log('No Hay Conexion')}
   }
 
   actualizarUsuarios(usuarios){
@@ -53,7 +47,7 @@ export class UsuarioService {
   }
 
   enviarUsuarios(usuarios){
-    console.log("** Enviando usuarios")
+    console.log("Enviar Usuarios Socket")
     ws.getSubscription('usuarios').emit('actualizar',usuarios);
   }
 
@@ -83,17 +77,12 @@ export class UsuarioService {
   
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
       console.error('Ocurrió un error: ', error.error.message);
       alert('Perdida de conexion');
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      
       console.error('Código de respuesta del servidor \nServer Response Status '+error.status +'\nMensage de error '+ error.message);
       alert('Error de estructura de Respuesta o datos enviados');
     }
-      // return an observable with a user-facing error message
     return throwError('Algó salió mal; intenta de nuevo más tarde.');
   }
 
