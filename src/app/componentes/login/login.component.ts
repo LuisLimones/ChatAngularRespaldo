@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuarios/usuario.service';
+import { servidorURL } from 'src/app/globales/Globales';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   public  cuerpo={};
 
 
-  constructor(private servicio: UsuarioService, private router:Router ) {
+  constructor(private usuarioService: UsuarioService, private router:Router ) {
     this.login = this.builder.group({
       username:['',Validators.required],
       password:['',Validators.required]
@@ -30,11 +30,10 @@ export class LoginComponent implements OnInit {
   }
 
   logearte(){
-    const url = 'http://127.0.0.1:3333/login';
-    const Headers =new HttpHeaders().set('Content-type','application/json');
-    this.cuerpo = JSON.stringify({username: this.login.value.username,password:this.login.value.password});
+    const url = servidorURL+'login';
+    this.cuerpo = JSON.stringify({username: this.login.value.username, password: this.login.value.password});
 
-    return this.servicio.postData(url,this.cuerpo,Headers).subscribe((response) =>{
+    return this.usuarioService.postData(url,this.cuerpo).subscribe((response) =>{
       let usuario=JSON.stringify(response);
       let us = JSON.parse(usuario);
       localStorage.setItem('token', us.token)

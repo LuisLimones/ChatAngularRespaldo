@@ -20,7 +20,6 @@ export class GrupoComponent implements OnInit {
   ngOnInit() {
     this.nombre = localStorage.getItem('username');
     this.usuariosSeleccionados = new Array<String>();
-    // obtengo los usuarios de la bd y los guardo en mi lista local
     this.usuarioService.obtenerUsuarios().subscribe(usuarios_bd=>{
       this.usuarios = usuarios_bd;
     });
@@ -28,42 +27,30 @@ export class GrupoComponent implements OnInit {
   }
 
   crearGrupo(){
+    //Filtro Grupo
     if(this.usuariosSeleccionados.length < 3){
       alert('Un grupo son 3 o mas personas\nPuedes hablar en privado seleccionando al usuario individualmente');
     }else{
-      console.log('-- nombres de los usuarios a buscar')
-      console.log(this.usuariosSeleccionados)
       this.chatService.obtenerConversacion({usernames: this.usuariosSeleccionados}).subscribe(conversacion=>{
-        console.log(' ')
-        console.log('-- conver obtenida')
-        console.log(conversacion)
-
-        //si ya tiene una conversación registrada, la muestra
+        //Filtro Grupo Igual
         if(conversacion){
-          // mando los mensajes por el socket del chat
-          alert('ya hay una conversacion con estos usuarios!');
+          alert('Ya existe un grupo con estos usuarios');
         }
-        // si no tiene una conversación registrada, comienza el proceso de registro
         else{
+          //Crea Conversacion
           if(!conversacion){
-            // si no tiene un chat registrado, le crea uno
             this.chatService.registrarChat().subscribe(chat => {
-              
-              // creamos un json que tendrá los datos del registro
               let datos = { "chat_id": chat.id, 
                             "usuarios": this.usuariosSeleccionados,
-                            "mensajes":[{ "emisor": 1, "msj":"", "tipo":1, "estado":1 }] };
-                
-              console.log('-- datos a registrar')
-              console.log(datos);
-              // registro una conversación con el id del chat que acabo de registrar y los datos            
+                            "mensajes":[{ "emisor": 1, "msj":"", "tipo":1, "estado":1 }] };        
               this.chatService.registrarConversacion(datos).subscribe(conversacion =>{
                 try{
-                  console.log('-- conver de la bd al registrar')
-                  console.log(conversacion)
-                  alert('se registró con éxito la conversación!');
+                  alert('Grupo Creado');
                   this.router.navigate(['/chats']);
-                }catch(e){ console.log(e); }
+                }
+                catch(e){ 
+                  console.log(e); 
+                }
               });
             });
           }

@@ -26,6 +26,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   mensajes: Array<Mensaje>;
   // este es el input que manda el mensaje
   mensaje: string;
+  estado_t: string;
   public escribiendo_t = false;
   ngOnInit() {
     this.usuario_logueado = new Usuario();

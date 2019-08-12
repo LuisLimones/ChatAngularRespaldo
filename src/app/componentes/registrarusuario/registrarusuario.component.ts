@@ -11,13 +11,13 @@ import { UsuarioService } from 'src/app/servicios/usuarios/usuario.service';
 export class RegistrarusuarioComponent implements OnInit, OnDestroy {
   public formcrearusuario: FormGroup;
   public builder = new FormBuilder();
-  public json = {};
+  public datos = {};
 
   constructor(private router:Router, private usuarioService: UsuarioService) {
     this.formcrearusuario = this.builder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-      email: ['', [Validators.required,Validators.email]]
+      email: ['', [Validators.required]]
     });
    }
 
@@ -29,16 +29,19 @@ export class RegistrarusuarioComponent implements OnInit, OnDestroy {
   }
 
   public registrar(){
-    this.json = JSON.stringify({
-      username: this.formcrearusuario.value.username,
-      password: this.formcrearusuario.value.password,
-      email:this.formcrearusuario.value.email});
-      console.log(this.json);
-
-      this.usuarioService.registrarUsuario(this.json).subscribe(usuarios=>{
-      this.formcrearusuario.reset();
-      this.router.navigate(['/login']);
-    });
+    try {
+      this.datos = JSON.stringify({
+        username: this.formcrearusuario.value.username,
+        password: this.formcrearusuario.value.password,
+        email:this.formcrearusuario.value.email});
+        this.usuarioService.registrarUsuario(this.datos).subscribe(usuarios=>{
+        this.formcrearusuario.reset();
+        this.router.navigate(['/login']);
+      });
+    } catch (error) {
+      alert('El Usuario Ya Existe');
+    }
+    
   }
 
 }
