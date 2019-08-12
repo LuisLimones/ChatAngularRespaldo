@@ -5,7 +5,11 @@ import { Usuario } from 'src/app/modelos/Usuario';
 import Ws from '@adonisjs/websocket-client';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-const ws = Ws('ws://127.0.0.1:3333')
+import { servidorURL } from 'src/app/globales/Globales';
+import { wsURL } from 'src/app/globales/Globales';
+
+
+const ws = Ws(wsURL);
 
 @Injectable({
   providedIn: 'root'
@@ -52,14 +56,13 @@ export class UsuarioService {
   }
 
   // métodos relacionados a los usuarios
-  url: string = 'http://127.0.0.1:3333/';
+  url: string = servidorURL;
   obtenerUsuarios(): Observable<Usuario[]>{
     let headers = new HttpHeaders().set('Content-Type','application/json');
     return this.request.get<Usuario[]>(this.url +'obtener-usuarios', {headers:headers});
   }
 
   registrarUsuario(json: any){
-    console.log("llega reg usuario usuarioservice");
     let headers = new HttpHeaders().set('Content-Type','application/json');
     return this.request.post(this.url + 'registrar-usuario', json, {headers:headers});
   }
@@ -80,10 +83,10 @@ export class UsuarioService {
       console.error('Ocurrió un error: ', error.error.message);
       alert('Perdida de conexion');
     } else {
-      console.error('Código de respuesta del servidor \nServer Response Status '+error.status +'\nMensage de error '+ error.message);
-      alert('Error de estructura de Respuesta o datos enviados');
+      console.error('Server Response Status '+error.status +'\nMensage de error '+ error.message);
+      alert('Error de estructura de Respuesta o datos enviado');
     }
-    return throwError('Algó salió mal; intenta de nuevo más tarde.');
+    return throwError('Error Interno\nIntente Mas Tarde');
   }
 
 

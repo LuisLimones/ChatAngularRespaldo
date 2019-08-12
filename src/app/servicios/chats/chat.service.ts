@@ -5,8 +5,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Conversacion } from 'src/app/modelos/Conversacion';
 import { Mensaje } from 'src/app/modelos/Mensaje';
 import { Usuario } from 'src/app/modelos/Usuario';
+import { servidorURL } from 'src/app/globales/Globales';
+import { wsURL } from 'src/app/globales/Globales';
 
-const ws = Ws('ws://127.0.0.1:3333')
+const ws = Ws(wsURL);
 
 @Injectable({
   providedIn: 'root'
@@ -74,7 +76,7 @@ export class ChatService {
     console.log(this.usuarios)
   }
 
-  url: string = 'http://127.0.0.1:3333/';
+  url: string = servidorURL;
   registrarChat(){
     let headers = new HttpHeaders().set('Content-Type','application/json');
     return this.request.post<any>(this.url +'reg-chat', {headers:headers});
