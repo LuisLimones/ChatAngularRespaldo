@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-body { padding: 2em; }
+html{
+	background-color: rgb(141, 141, 224);
+}
+
+body { padding: 2em; 
+	background-color: rgb(141, 141, 224);
+}
+
 
 :root {
 	--blue: #007bff;

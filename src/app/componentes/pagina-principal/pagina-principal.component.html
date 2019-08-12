@@ -1,9 +1,15 @@
-<div class="typewriter col-4 offset-4">
-    <h1>La red social.</h1>
+<div class="container">
+<div class="card">
+        <img class="card-img-top img-fluid" src="assets/img/chat.png" alt="Card image cap">
+    <div class="card-header"><h4>CHAT</h4></div>
+    <div class="card-body">
+        
+      <h4 class="card-title">Bienvenido</h4>
+        <button *ngIf="!nombre_usuario" type="button" (click)="login()" class="btn btn-primary">Iniciar Sesión</button>
+        <button *ngIf="nombre_usuario" type="button" (click)="salir()" class="btn btn-primary">Cerrar Sesión</button>
+        <button *ngIf="!nombre_usuario" type="button" (click)="crearusuario()" class="btn btn-primary">Registrar</button>
+    </div>
+  </div>
 </div>
-<div class="offset-4" >
-    <button *ngIf="!nombre_usuario" (click)="login()" class="btn btn-primary">Iniciar Sesión</button>
-    <button *ngIf="nombre_usuario" (click)="salir()" class="btn btn-primary">Cerrar Sesión</button>
-    <button *ngIf="!nombre_usuario" (click)="crearusuario()" class="btn btn-primary">Registrar</button>
-</div>
+
 
