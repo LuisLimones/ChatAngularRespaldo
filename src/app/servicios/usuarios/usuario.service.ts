@@ -23,7 +23,7 @@ export class UsuarioService {
 
   httpOptions={
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type': 'application/json'
     })
   };
 
@@ -66,7 +66,9 @@ export class UsuarioService {
   }
 
   registrarUsuario(json: any){
-    return this.request.post(this.url + 'registrar-usuario', json, this.httpOptions);
+    return this.request.post(this.url + 'registrar-usuario', json, this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
   }
 
   //Login
@@ -85,8 +87,13 @@ export class UsuarioService {
       console.error('Ocurrió un error: ', error.error.message);
       alert('Conexion Perdida');
     } else {
-      console.error('Server Response Status '+error.status +'\nMensage de error '+ error.message);
-      alert('Error de estructura de Respuesta o datos enviado');
+      if(error.status==404){
+        console.error('Server Response Status '+error.status +'\nMensage de error '+ error.message);
+        alert('Usuario O Contraseña Invalidos');
+      }
+      if(error.status==400){
+        alert("Usuario Ya Registrado")
+      }
     }
     return throwError('Error Interno\nIntente Mas Tarde');
   }
