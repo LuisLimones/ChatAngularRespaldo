@@ -7,24 +7,27 @@ import { Router } from '@angular/router';
 })
 export class PaginaPrincipalComponent implements OnInit {
 
-  constructor(public ruter: Router) { }
+  constructor(public router: Router) { }
 
   nombre_usuario: string;
   ngOnInit() {
     this.nombre_usuario = localStorage.getItem('username');
+    if(localStorage.getItem('token')){
+      this.router.navigate(['chats']);
+    }
   }
 
   crearusuario(){
-    this.ruter.navigate(['registrar']);
+    this.router.navigate(['registrar']);
   }
 
   login(){
-    this.ruter.navigate(['login']);
+    this.router.navigate(['login']);
   }
   salir(){
     localStorage.removeItem('token');
     localStorage.removeItem('id');
     localStorage.removeItem('username');
-    this.ruter.navigate(['login']);
+    this.router.navigate(['login']);
   }
 }
