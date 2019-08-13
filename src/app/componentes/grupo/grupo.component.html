@@ -1,8 +1,8 @@
 <h2>Personas en la red social.</h2>
 <div class="contactos" id="scrollbar">
     <label *ngFor="let u of usuarios" class="label">
-        <div *ngIf="u.username != nombre" class="toggle">
-          <input class="toggle-state" type="checkbox" name="check" value="u.username" (change)="cambiarOpcion(u.username,$event)"/>
+        <div *ngIf="u.username != nombre" class="checkbox">
+          <input class="form-check-input" type="checkbox" name="check" value="u.username" (change)="cambiarOpcion(u.username,$event)"/>
           <div class="toggle-inner">
              <div class="indicator"></div>
           </div>
