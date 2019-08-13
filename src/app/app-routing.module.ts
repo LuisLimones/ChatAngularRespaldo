@@ -9,7 +9,6 @@ import { RegistrarusuarioComponent } from './componentes/registrarusuario/regist
 import { LoginComponent } from './componentes/login/login.component';
 import { LoginGuard } from './guards/login.guard';
 import { AuthGuard } from './guards/auth.guard';
-import { NoauthGuard } from './guards/noauth.guard';
 import { ChatsComponent } from './componentes/chats/chats.component';
 import { ChatComponent } from './componentes/chat/chat.component';
 
@@ -19,7 +18,7 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent, canActivate:[LoginGuard]},
   {path: 'chats', component: ChatsComponent, canActivate:[AuthGuard]},
   {path: 'chatear', component: ChatComponent, canActivate:[AuthGuard]},
-  {path: 'registrar', component: RegistrarusuarioComponent, canActivate:[NoauthGuard]},
+  {path: 'registrar', component: RegistrarusuarioComponent},
   {path: 'crear-grupo', component: GrupoComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: "" }
  
