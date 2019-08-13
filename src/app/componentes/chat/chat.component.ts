@@ -4,6 +4,7 @@ import { Mensaje } from 'src/app/modelos/Mensaje';
 import { Usuario } from 'src/app/modelos/Usuario';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-chat',
@@ -12,7 +13,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ChatComponent implements OnInit, OnDestroy {
 
-  constructor(private navegar: Router, private chatService: ChatService,private http:HttpClient) { }
+  constructor(private navegar: Router, private chatService: ChatService,private http:HttpClient, private toastr: ToastrService) { }
 
   // estos son los usuarios en los que se buscará el chat
   usuario_logueado: Usuario;
@@ -71,12 +72,9 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.chatService.enviarMensajes(conversacion['mensajes']);
         this.chatService.getSocket().on('escribiendomsj', () => {
           try {
-            console.log('escribiendo...');
-            this.estado_t='escribiendo...';
-            setTimeout( tecleando => {
-              this.estado_t = '';
-
-            }, 2000);
+            this.toastr.info("Escribiendo...","", {
+              timeOut: 1000
+            });
           } catch (e) {
             console.log(e);
           }

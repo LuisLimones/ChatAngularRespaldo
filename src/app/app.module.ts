@@ -7,6 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPopper } from 'angular-popper';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 // componentes del chat
 import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-principal.component';
@@ -36,7 +39,13 @@ import { RegistrarusuarioComponent } from './componentes/registrarusuario/regist
     NgxPopper,
     FormsModule,
     ReactiveFormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
