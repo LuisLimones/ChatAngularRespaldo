@@ -1,7 +1,7 @@
 <h2 class="offset-4"> Bienvenido de nuevo <b>{{nombre}}</b>.</h2>
 <br>
 <div class="row">
-  <div class="col-6" id="scrollbar">
+  <div class="col-6 msg_history" id="scrollbar" >
     <ul *ngFor="let g of grupos" (click)="seleccionarGrupo(g)" style="cursor: pointer; margin-bottom: 15px;">
       <h1>Grupo {{g.id_chat}}</h1>
       <span *ngFor="let u of g.usuarios">{{ u }} <br></span>
@@ -12,9 +12,8 @@
       </ul>
       <br>
     </div>
-    <button class="btn-msn btn-block" (click)="crearGrupo()">Crea un grupo!</button>
   </div>
-  <div class="col-6" id="scrollbar">
+  <div class="col-6 msg_history" id="scrollbar">
       <ul>
         <h1>Contactos de la red social</h1>
         <li *ngFor="let u of usuarios" (click)="seleccionarUsuario(u)">
@@ -22,5 +21,6 @@
           <span *ngIf="u.username != nombre"> &#10240; {{u.username}} </span>
         </li>
       </ul>
-    </div>
+  </div>
 </div>
+<button class="btn-msn btn-block col-6" style="width: 50%;" (click)="crearGrupo()">Crea un grupo!</button>

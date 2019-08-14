@@ -26,6 +26,11 @@ img{ width: 60%; height: auto; float: left;}
   height: 500px; 
   overflow-y: scroll;
 }
+.msg_history{
+  height: 400px;
+  overflow-y: scroll;
+  padding-top: 10px;
+}
 
 ul{
   margin: 0;
