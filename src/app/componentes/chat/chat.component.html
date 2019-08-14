@@ -5,9 +5,9 @@
       <div *ngIf="m.emisor == nombre && m.msj" class="outgoing_msg">
         <div class="sent_msg">
             <p *ngIf="m.tipo == 1"> {{ m.msj }} </p>
-            <img style="max-width: 300px; height: auto;" *ngIf="m.tipo == 2" src="http://127.0.0.1:3333{{m.msj}}" alt="imagen de m.emisor">
-            <video style="max-width: 450px; height: auto;" *ngIf="m.tipo == 3" src="http://127.0.0.1:3333{{m.msj}}" controls></video>
-            <audio *ngIf="m.tipo == 4" src="http://127.0.0.1:3333{{m.msj}}" controls></audio>
+            <img style="max-width: 300px; height: auto;" *ngIf="m.tipo == 2" src="{{urlArchivo}}{{m.msj}}" alt="imagen de m.emisor">
+            <video style="max-width: 450px; height: auto;" *ngIf="m.tipo == 3" src="{{urlArchivo}}{{m.msj}}" controls></video>
+            <audio *ngIf="m.tipo == 4" src="{{urlArchivo}}{{m.msj}}" controls></audio>
           <span class="time_date"> Yo </span>
         </div>
       </div>
@@ -15,9 +15,9 @@
         <div class="received_msg">
           <div class="received_withd_msg">
             <p *ngIf="m.tipo == 1"> {{ m.msj }} </p>
-            <img style="max-width: 300px; height: auto;" *ngIf="m.tipo == 2" src="http://127.0.0.1:3333{{m.msj}}" alt="imagen de m.emisor">
-            <video style="max-width: 450px; height: auto;" *ngIf="m.tipo == 3" src="http://127.0.0.1:3333{{m.msj}}" controls></video>
-            <audio *ngIf="m.tipo == 4" src="http://127.0.0.1:3333{{m.msj}}" controls></audio>
+            <img style="max-width: 300px; height: auto;" *ngIf="m.tipo == 2" src="{{urlArchivo}}{{m.msj}}" alt="imagen de m.emisor">
+            <video style="max-width: 450px; height: auto;" *ngIf="m.tipo == 3" src="{{urlArchivo}}{{m.msj}}" controls></video>
+            <audio *ngIf="m.tipo == 4" src="{{urlArchivo}}{{m.msj}}" controls></audio>
             <span class="time_date"> {{ m.emisor }} </span>
           </div>
         </div>

@@ -25,6 +25,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   id_chat: number;
   mensajes: Array<Mensaje>;
   mensaje: string;
+  urlArchivo: string = "http://127.0.0.1:3333";
 
   ngOnInit() {
     this.usuario_logueado = new Usuario();
