@@ -79,10 +79,8 @@
 
 .msg_send_btn {
   padding: 5px;
-  background: rgb(0,120,255);
-  background: linear-gradient(0deg, rgba(0,120,255,1) 0%, rgba(0,198,255,1) 100%);
   border: medium none;
-	border-radius: 100rem;
+
   color: #fff;
   cursor: pointer;
   font-size: 17px;
@@ -95,10 +93,9 @@
 
 .msg_send_btn-video {
   padding: 5px;
-  background: rgb(186, 228, 0);
-  background: linear-gradient(0deg, rgb(117, 241, 0) 0%, rgb(205, 241, 0) 100%);
+  background: #FF8108;
   border: medium none;
-	border-radius: 100rem;
+
   color: #fff;
   cursor: pointer;
   font-size: 17px;
@@ -111,10 +108,10 @@
 
 .msg_send_btn-imagen {
   padding: 5px;
-  background: rgb(255, 0, 85);
-  background: linear-gradient(0deg, rgb(255, 0, 128) 0%, rgb(255, 0, 255) 100%);
+  background: #017f09;
+  
   border: medium none;
-	border-radius: 100rem;
+
   color: #fff;
   cursor: pointer;
   font-size: 17px;
@@ -127,10 +124,8 @@
 
 .msg_send_btn-audio {
   padding: 5px;
-  background: rgb(255, 136, 0);
-  background: linear-gradient(0deg, rgb(255, 153, 0) 0%, rgb(255, 238, 0) 100%);
+  background: #B3020B;
   border: medium none;
-	border-radius: 100rem;
   color: #fff;
   cursor: pointer;
   font-size: 17px;

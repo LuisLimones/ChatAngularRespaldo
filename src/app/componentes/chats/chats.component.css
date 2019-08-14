@@ -15,6 +15,11 @@ img{ width: 60%; height: auto; float: left;}
   border-radius: 10px;
 }
 
+.msg_history{
+  height: 400px;
+  overflow-y: scroll;
+  padding-top: 10px;
+}
 
 .chat_people{ overflow:hidden; clear:both;}
 .chat_list {

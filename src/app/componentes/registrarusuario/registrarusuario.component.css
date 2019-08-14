@@ -1,5 +1,7 @@
 
-
+span{
+  color: 	#428bca;
+}
 .container{
     padding-top: 15px;
     width: 350px;
@@ -13,5 +15,5 @@
   }
 .card-header{
     color: white;
-    background-color: blue;
+    background-color: 	#428bca;
   }
